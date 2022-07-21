@@ -50,6 +50,7 @@ const AddProductModal = (props) => {
             .catch((error) => console.log(error));
         onClose();
         setRefresh(!refresh)
+        setShowModal(false);
 
     }
 
@@ -88,7 +89,7 @@ const AddProductModal = (props) => {
                                     </button>
                                 </div>
                                 <div className="relative p-6 flex-auto">
-                                    <form className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full" onSubmit={addNewProduct}>
+                                    <form className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full" onSubmit={addNewProduct} >
                                         <label className="block text-black text-sm font-bold mb-1">
                                             Product Name
                                         </label>
