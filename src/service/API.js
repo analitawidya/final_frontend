@@ -1,9 +1,9 @@
 import axios from "axios";
-import Cookies from 'js-cookie';
 
 
 
-const token = Cookies.get('refreshToken')
+
+
 
 
 export const Registration = async (
@@ -15,7 +15,7 @@ export const Registration = async (
   phone_number,
   image
 ) => {
-  return await axios.post("http://localhost:8200/registration", {
+  return await axios.post("http://localhost:8000/registration", {
     username: username,
     password: password,
     name: name,
@@ -32,7 +32,7 @@ export const LoginAPI = async (
     username, 
     password
 ) => {
-    return await axios.post("http://localhost:8200/login", {
+    return await axios.post("http://localhost:8000/login", {
         username: username,
         password: password
     });
@@ -40,7 +40,7 @@ export const LoginAPI = async (
 
 export const getAllProducts =  () => {
 
-  return axios.get('http://localhost:8200/products', {
+  return axios.get('http://localhost:8000/products', {
       
 
   })
@@ -49,7 +49,7 @@ export const getAllProducts =  () => {
 
 export const getAllProductById =  (id) => {
 
-  return axios.get('http://localhost:8200/products/id', {
+  return axios.get('http://localhost:8000/products/id', {
       
 
   })
@@ -57,57 +57,131 @@ export const getAllProductById =  (id) => {
 }
 
 
+export const deleteProduct = async (id, token) => {
+  return await axios.delete(`http://localhost:8000/deleteProduct/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+// export const addProduct = async (tipe_property, city, address, building_area, bedrooms, bathrooms, price, image, token) => {
+//   return await axios.post('http://localhost:8000/myProducts', {
+//     tipe_property: tipe_property,
+//     address : address,
+//     city: city,
+//     building_area: building_area,
+//     bedrooms: bedrooms,
+//     bathrooms : bathrooms,
+//     price : price,
+//     image : image
 
-export const deleteProduct = (id) => {
-  const token = Cookies.get('refreshToken')
 
-  const headerConfig = {
+//   }, {
+//       headers: {
+//           Authorization: `Bearer ${token}`
+//       }
+//   })
+
+// }
+export const AddProduct = async (
+  tipe_property,
+  city,
+  address,
+  building_area,
+  bedrooms,
+  bathrooms,
+  price,
+  image,
+  token
+) => {
+  return await axios.post(
+    "http://localhost:8000/myProducts",
+    {
+      tipe_property: tipe_property,
+      address: address,
+      city: city,
+      building_area: building_area,
+      bedrooms: bedrooms,
+      bathrooms: bathrooms,
+      price: price,
+      image: image,
+    },
+    {
       headers: {
-          'Authorization': "Bearer " + token,
+        Authorization: `Bearer ${token}`,
       },
-  };
-  return axios.delete(`http://localhost:8200/deleteProduct/:id`, headerConfig);
+    }
+  );
+};
+
+
+
+
+ 
+
+
+
+export const getProductById = (id) => {
+    return axios.get(`http://localhost:8000/products/${id}`);
+};
+
+
+export const deleteAllProduct = async (token) => {
+  return await axios.delete("http://localhost:8000/deleteAll", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+
+
+export const GetMyProducts = async (token) => {
+  return await axios.get("http://localhost:8000/myProducts" , {
+   
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+
+export const GetMyProfile = async (token) => {
+  return await axios.get("http://localhost:8000/user", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 }
-export const addProduct = async (tipe_property, city, address, building_area, bedrooms, bathrooms, price, image) => {
-  return await axios.post('http://localhost:8200/myProducts', {
-    tipe_property: tipe_property,
-    address : address,
-    city: city,
-    building_area: building_area,
-    bedrooms: bedrooms,
-    bathrooms : bathrooms,
-    price : price,
-    image : image
 
 
-  }, {
+export const updateProduct = async (
+  tipe_property,
+  city,
+  address,
+  building_area,
+  bedrooms,
+  bathrooms,
+  price,
+  image,
+  token
+) => {
+  return await axios.put(
+    `http://localhost:8000/myProducts`,
+    {
+      tipe_property: tipe_property,
+      address: address,
+      city: city,
+      building_area: building_area,
+      bedrooms: bedrooms,
+      bathrooms: bathrooms,
+      price: price,
+      image: image,
+    },
+    {
       headers: {
-          Authorization: `Bearer ${token}`
-      }
-  })
-
-}
-
-
-export const updateProduct = (tipe_property, city, address, building_area, bedrooms, bathrooms, price, image) => {
-  const bodyJSON = {
-      tipe_property, 
-      city, 
-      address, 
-      building_area, 
-      bedrooms, 
-      bathrooms, 
-      price, 
-      image
-  };
-
-
-  const headerConfig = {
-      headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-  };
-
-
-  return axios.post(`http://localhost:8200/myProducts`,bodyJSON, headerConfig);
+    }
+  );
 };

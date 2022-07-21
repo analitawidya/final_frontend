@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { addProduct } from '../../service/API.js'
+import React, { useState, useEffect } from 'react'
+import { AddProduct } from '../../service/API.js'
+import axios from 'axios';
 
 
 
@@ -15,10 +16,28 @@ const AddProductModal = (props) => {
     const [bathrooms, setBathrooms] = useState(" ")
     const [price, setPrice] = useState(" ")
     const [image, setImage] = useState(" ")
+    const [token, setToken] = useState("");
 
+
+
+     
+        const refreshToken = async () => {
+          try {
+            const response = await axios.get("http://localhost:8000/token");
+            setToken(response.data.accessToken);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+
+            useEffect(() => {
+              refreshToken();
+            }, []);
+
+            
     const addNewProduct = async (e) => {
         e.preventDefault()
-        await addProduct (
+        await AddProduct (
         tipe_property,
             city,
             address,
@@ -26,13 +45,19 @@ const AddProductModal = (props) => {
             bedrooms,
             bathrooms,
             price,
-            image)
+            image, token)
             .then((response) => console.log(response.data))
             .catch((error) => console.log(error));
         onClose();
         setRefresh(!refresh)
 
     }
+
+        
+
+   
+
+     
 
     
     return (

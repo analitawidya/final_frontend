@@ -68,10 +68,10 @@ const Header = () => {
                     <a href="/">Home</a>
                   </li>
                   <li className="border-b border-gray-400 my-8 uppercase">
-                    <a href="/login">Add Product</a>
+                    <a href="/admin">Admin</a>
                   </li>
                   <li className="border-b border-gray-400 my-8 uppercase">
-                    <a href="/register">Profile</a>
+                    <a href="/profile">Profile</a>
                   </li>
                   <li className="border-b border-gray-400 my-8 uppercase">
                     <a onClick={Logout}>Logout</a>
@@ -94,23 +94,24 @@ const Header = () => {
           </section>
 
           {isLogin ? (
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <ul className="DESKTOP-MENU hidden space-x-8 lg:flex mt-2">
+            <div style={{ display: "flex", justifyContent: "space-around" }}>
+              <ul className="DESKTOP-MENU hidden space-x-8 lg:flex mt-4">
                 <li>
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/login">Admin</Link>
+                  <Link to="/admin">Admin</Link>
                 </li>
                 <li>
-                  <Link to="/register">Profile</Link>
+                  <Link to="/profile">Profile</Link>
                 </li>
                 <li></li>
               </ul>
               <button
+                className="DESKTOP-MENU hidden space-x-8 lg:flex mt-2 bg-violet-700 hover:bg-violet-800 text-white transitionfocus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 h-10"
                 onClick={Logout}
                 type="submit"
-                class="bg-violet-700 hover:bg-violet-800 text-white transitionfocus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 h-10"
+                
               >
                 Logout
               </button>
