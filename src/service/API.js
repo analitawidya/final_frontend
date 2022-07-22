@@ -92,6 +92,7 @@ export const AddProduct = async (
   bathrooms,
   price,
   image,
+  description,
   token
 ) => {
   return await axios.post(
@@ -105,6 +106,7 @@ export const AddProduct = async (
       bathrooms: bathrooms,
       price: price,
       image: image,
+      description: description
     },
     {
       headers: {
@@ -156,6 +158,7 @@ export const GetMyProfile = async (token) => {
 
 
 export const updateProduct = async (
+  id,
   tipe_property,
   city,
   address,
@@ -164,11 +167,13 @@ export const updateProduct = async (
   bathrooms,
   price,
   image,
+  description,
   token
 ) => {
   return await axios.put(
     `http://localhost:8000/myProducts`,
     {
+      id: id,
       tipe_property: tipe_property,
       address: address,
       city: city,
@@ -177,6 +182,7 @@ export const updateProduct = async (
       bathrooms: bathrooms,
       price: price,
       image: image,
+      description: description
     },
     {
       headers: {
