@@ -79,7 +79,7 @@ const PropertyDetails = () => {
           </div>
         </div>
         <div className="text-3xl font-semibold text-violet-600">
-          $ {dataProduct.price}
+          Rp. {dataProduct.price}
         </div>
       </div>
       <div className="flex flex-col items-start gap-8 lg:flex-row">

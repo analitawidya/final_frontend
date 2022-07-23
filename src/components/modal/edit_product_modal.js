@@ -15,6 +15,7 @@ const EditProductModal = (props) => {
   const [price, setPrice] = useState(props.data.price);
   const [image, setImage] = useState(props.data.image);
   const [description, setDescription] = useState(props.data.description);
+  const [success, setSuccess] = useState("");
   const [token, setToken] = useState("");
 
   const refreshToken = async () => {
@@ -45,7 +46,7 @@ const EditProductModal = (props) => {
       description,
       token
     )
-      .then((response) => console.log(response.data))
+      .then((response) => setSuccess(response.data.success))
       .catch((error) => console.log(error));
     onClose();
     setRefresh(!refresh);
@@ -79,12 +80,13 @@ const EditProductModal = (props) => {
                   </button>
                 </div>
                 <div className="relative p-6 flex-auto">
+                  <p className="mb-5 text-red-600">{success}</p>
                   <form
                     className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full"
                     onSubmit={editProduct}
                   >
                     <label className="block text-black text-sm font-bold mb-1">
-                      Product Name
+                      Tipe Property
                     </label>
                     <input
                       className="shadow appearance-none border rounded w-full py-2 px-1 text-black"

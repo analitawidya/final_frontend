@@ -5,7 +5,7 @@ import Search from '../components/Search';
 
 const Banner = () => {
   return (
-    <div className='bg-violet-400'>
+    <div className='bg-violet-400 pt-10 pb-10 mb-5'>
     <section className='h-full max-h-[640px] mb-8 xl:mb-24'>
       <div className='flex flex-col lg:flex-row'>
         <div className='lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-center flex-1 px-4 lg:px-0 mt-10'>
@@ -20,7 +20,6 @@ const Banner = () => {
           <img src={Image} alt='' width ="500px" margin = "10px" className= "rounded-tl-[90px] rounded-br-[90px] mt-3"/>
         </div>
       </div>
-      <Search />
     </section>
     </div>
   );

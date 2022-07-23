@@ -35,6 +35,7 @@ function Login() {
                 Login Section
               </h2>
               <div className="border-2 w-10 border-violet-400 inline-block mb-2"></div>
+              <p className="mb-5 text-red-600">{error}</p>
               <div className="flex flex-col item-center">
                 <form>
                   <div class="mb-6">
@@ -48,7 +49,7 @@ function Login() {
                       type="text"
                       id="username"
                       value={username}
-                      onChange= {(e) => setUsername(e.target.value)}
+                      onChange={(e) => setUsername(e.target.value)}
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Username"
                       required
@@ -89,7 +90,7 @@ function Login() {
                     </label>
                   </div>
                   <button
-                  onClick={Login}
+                    onClick={Login}
                     type="submit"
                     class="text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >

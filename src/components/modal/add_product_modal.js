@@ -91,7 +91,7 @@ const AddProductModal = (props) => {
                     onSubmit={addNewProduct}
                   >
                     <label className="block text-black text-sm font-bold mb-1">
-                      Product Name
+                      Tipe Property
                     </label>
                     <input
                       className="shadow appearance-none border rounded w-full py-2 px-1 text-black"

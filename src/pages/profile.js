@@ -47,7 +47,10 @@ function Profile() {
             <div class="px-4 py-5 sm:px-6">
               <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                 <div className="w-20 h-20 p-1 border border-gray-300 rounded-full">
-                  <img className="rounded-full" src={dataUser.image}></img>
+                  <img
+                    className="rounded-full w-10 h-10"
+                    src={dataUser.image}
+                  ></img>
                 </div>
               </div>
             </div>
